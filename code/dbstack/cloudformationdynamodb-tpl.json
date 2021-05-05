@@ -1,0 +1,102 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+      "tablecustomer": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "customer",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "customer_id",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [
+            {
+              "AttributeName": "customer_id",
+              "KeyType": "HASH"
+            }
+          ],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": "5",
+            "WriteCapacityUnits": "5"
+          }
+        }
+      },
+      "tableproduct": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "product",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "product_id",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [
+            {
+              "AttributeName": "product_id",
+              "KeyType": "HASH"
+            }
+          ],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": "5",
+            "WriteCapacityUnits": "5"
+          }
+        }
+      },
+      "tablecart": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "cart",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "customer_id",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [
+            {
+              "AttributeName": "customer_id",
+              "KeyType": "HASH"
+            }
+          ],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": "5",
+            "WriteCapacityUnits": "5"
+          }
+        }
+      },
+      "tablelogger": {
+        "Type": "AWS::DynamoDB::Table",
+        "Properties": {
+          "TableName": "logger",
+          "AttributeDefinitions": [
+            {
+              "AttributeName": "customer_id",
+              "AttributeType": "S"
+            },
+            {
+              "AttributeName": "op_date",
+              "AttributeType": "S"
+            }
+          ],
+          "KeySchema": [
+            {
+              "AttributeName": "customer_id",
+              "KeyType": "HASH"
+            },
+            {
+              "AttributeName": "op_date",
+              "KeyType": "RANGE"
+            }
+          ],
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": "5",
+            "WriteCapacityUnits": "5"
+          }
+        }
+      }
+    },
+    "Description": "DynamoDB tables for Cybershot"
+  }
